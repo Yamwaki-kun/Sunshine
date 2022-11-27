@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "874190287571",
+    "project_id": "projeto-sunshine-app",
+    "storage_bucket": "projeto-sunshine-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:874190287571:android:1670518d64f03570c35a26",
+        "android_client_info": {
+          "package_name": "com.example.sunshine_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "874190287571-em3ttdjp028avtgukvdv0f1r4qm5aicc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJ6UcYn1lLmJCh2AYaEDbYEN8JSDYGNLE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "874190287571-em3ttdjp028avtgukvdv0f1r4qm5aicc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sunshine_app/controller/signin_controller.dart';
 import '../colors/palette.dart';
 import '../widgets/logo_sized_box.dart';
-import '../widgets/princiapal_button.dart';
+import '../widgets/text_field_password.dart';
 import '../widgets/text_field_signin.dart';
 
 class SigninPage extends StatefulWidget {
@@ -16,6 +16,19 @@ class SigninPage extends StatefulWidget {
 
 class _SigninPageState extends State<SigninPage> {
   SigninController signinController = SigninController();
+
+  @override
+  void dispose() {
+    signinController.confirmacaoController.dispose();
+    signinController.dddController.dispose();
+    signinController.emailController.dispose();
+    signinController.isVisiblePassword.dispose();
+    signinController.nomeController.dispose();
+    signinController.senhaController.dispose();
+    signinController.telefoneController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,18 +75,16 @@ class _SigninPageState extends State<SigninPage> {
                   children: [
                     SizedBox(
                       width: 110,
-                      child: Flexible(
-                        child: TextFieldSignin(
-                          hintText: "Digite o seu ddd",
-                          labelText: "DDD",
-                          isDdd: true,
-                          isPhone: false,
-                          controller: signinController.dddController,
-                          sufixIcon: Icon(
-                            Icons.call,
-                            size: 23,
-                            color: Palette.materialPurple.shade900,
-                          ),
+                      child: TextFieldSignin(
+                        hintText: "Digite o seu ddd",
+                        labelText: "DDD",
+                        isDdd: true,
+                        isPhone: false,
+                        controller: signinController.dddController,
+                        sufixIcon: Icon(
+                          Icons.call,
+                          size: 23,
+                          color: Palette.materialPurple.shade900,
                         ),
                       ),
                     ),
@@ -108,37 +119,41 @@ class _SigninPageState extends State<SigninPage> {
                   ),
                 ),
                 const SizedBox(height: 40),
-                TextFieldSignin(
+                TextFieldPassword(
                   hintText: "Digite uma senha",
                   labelText: "Senha",
-                  isDdd: false,
-                  isPhone: false,
+                  isPasswordOrConfirm: true,
                   controller: signinController.senhaController,
-                  sufixIcon: Icon(
-                    Icons.password,
-                    size: 23,
-                    color: Palette.materialPurple.shade900,
-                  ),
+                  signinController: signinController,
                 ),
                 const SizedBox(height: 40),
-                TextFieldSignin(
+                TextFieldPassword(
                   hintText: "Confirme a sua senha",
                   labelText: "Confirmação de senha",
-                  isDdd: false,
-                  isPhone: false,
+                  isPasswordOrConfirm: false,
                   controller: signinController.confirmacaoController,
-                  sufixIcon: Icon(
-                    Icons.check,
-                    size: 23,
-                    color: Palette.materialPurple.shade900,
-                  ),
+                  signinController: signinController,
                 ),
                 const SizedBox(height: 40),
-                const SizedBox(
-                  width: 150,
-                  height: 40,
-                  child: PrincipalButton(textValue: "Salvar"),
-                )
+                SizedBox(
+                    width: 150,
+                    height: 40,
+                    child: ElevatedButton(
+                        onPressed: () {
+                          print("salvar");
+                        },
+                        style: ButtonStyle(
+                            shape: MaterialStateProperty.all(
+                                RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15.0),
+                            )),
+                            backgroundColor: MaterialStateProperty.all(
+                                Palette.materialPurple.shade700)),
+                        child: const Text("Salvar",
+                            style: TextStyle(
+                              fontSize: 17,
+                              fontWeight: FontWeight.w400,
+                            ))))
               ],
             ),
           ),

@@ -27,7 +27,7 @@ class TextFieldSignin extends StatelessWidget {
         mask: '#####-####', type: MaskAutoCompletionType.lazy);
 
     var maskDdd =
-        MaskTextInputFormatter(mask: '+##', type: MaskAutoCompletionType.lazy);
+        MaskTextInputFormatter(mask: '##', type: MaskAutoCompletionType.lazy);
 
     return TextField(
       controller: controller,

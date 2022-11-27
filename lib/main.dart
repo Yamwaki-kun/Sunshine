@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sunshine_app/colors/palette.dart';
+import 'package:sunshine_app/view/login_page.dart';
 import 'view/signin_page.dart';
 
 void main() {
@@ -17,7 +18,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Palette.materialPurple,
       ),
-      home: const SigninPage(title: ""),
+      //home: const SigninPage(title: ""),
+      home: const LoginPage(),
     );
   }
 }

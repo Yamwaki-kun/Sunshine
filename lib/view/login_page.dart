@@ -57,13 +57,12 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 const SizedBox(height: 30),
                 TextFieldSignin(
-                  hintText: "Digite o seu email: ",
+                  hintText: "Digite o seu e-mail",
                   labelText: "E-mail",
-                  isDdd: false,
-                  isPhone: false,
+                  typeInput: TextInputType.emailAddress,
                   controller: signinController.emailController,
                   sufixIcon: Icon(
-                    Icons.keyboard,
+                    Icons.mail,
                     size: 23,
                     color: Palette.materialPurple.shade900,
                   ),
@@ -72,7 +71,7 @@ class _LoginPageState extends State<LoginPage> {
                 TextFieldPassword(
                   hintText: "Digite uma senha",
                   labelText: "Senha",
-                  isPasswordOrConfirm: true,
+                  isPasswordOrConfirmPassword: true,
                   controller: signinController.senhaController,
                   signinController: signinController,
                 ),

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../colors/palette.dart';
 import '../controller/signin_controller.dart';
@@ -9,23 +10,31 @@ class TextFieldPassword extends StatelessWidget {
     required this.hintText,
     required this.controller,
     required this.signinController,
-    required this.isPasswordOrConfirm,
+    required this.isPasswordOrConfirmPassword,
   }) : super(key: key);
 
   final String labelText;
   final String hintText;
-  //true = password false confirm password
-  final bool isPasswordOrConfirm;
-
   final TextEditingController controller;
   final SigninController signinController;
+  final bool isPasswordOrConfirmPassword;
+
+  ValueListenable<bool> typeListenableController() {
+    if (isPasswordOrConfirmPassword) {
+      return signinController.isVisiblePassword;
+    } else {
+      return signinController.isVisibleConfirmPassword;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
+    double iconSize = 25;
+
     return ValueListenableBuilder(
-        valueListenable: signinController.isVisiblePassword,
+        valueListenable: typeListenableController(),
         builder: (context, value, child) {
-          return TextField(
+          return TextFormField(
             obscureText: value,
             controller: controller,
             decoration: InputDecoration(
@@ -34,18 +43,36 @@ class TextFieldPassword extends StatelessWidget {
                   borderRadius: BorderRadius.all(Radius.circular(15))),
               hintText: hintText,
               hintStyle: TextStyle(
-                  color: Palette.materialPurple.shade900, fontSize: 15),
-              isDense: true,
-              suffixIcon: GestureDetector(
-                onTap: signinController.setVisiblePassword,
-                child: Icon(
-                  !value ? Icons.remove_red_eye_outlined : Icons.remove_red_eye,
-                  size: 23,
-                  color: Palette.materialPurple.shade900,
+                color: Palette.materialPurple.shade900,
+                fontSize: 15,
+              ),
+              suffixIcon: InkWell(
+                onTap: !isPasswordOrConfirmPassword
+                    ? signinController.setVisibleConfirmPassword
+                    : signinController.setVisiblePassword,
+                child: SizedBox(
+                  height: 10,
+                  width: 10,
+                  child: Center(
+                    child: AnimatedCrossFade(
+                        firstChild: Icon(
+                          Icons.visibility,
+                          color: Palette.materialPurple.shade800,
+                          size: iconSize,
+                        ),
+                        secondChild: Icon(
+                          Icons.visibility_off,
+                          color: Palette.materialPurple.shade800,
+                          size: iconSize,
+                        ),
+                        crossFadeState: !value
+                            ? CrossFadeState.showFirst
+                            : CrossFadeState.showSecond,
+                        duration: const Duration(milliseconds: 250)),
+                  ),
                 ),
               ),
-              contentPadding:
-                  const EdgeInsets.symmetric(vertical: 12, horizontal: 15),
+              contentPadding: const EdgeInsets.symmetric(horizontal: 15),
             ),
           );
         });

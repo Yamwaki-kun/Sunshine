@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class SigninController {
   //value notifier
   var isVisiblePassword = ValueNotifier(true);
+  var isVisibleConfirmPassword = ValueNotifier(true);
 
   //controllers
   final nomeController = TextEditingController();
@@ -15,5 +16,9 @@ class SigninController {
   //methods
   setVisiblePassword() {
     isVisiblePassword.value = !isVisiblePassword.value;
+  }
+
+  setVisibleConfirmPassword() {
+    isVisibleConfirmPassword.value = !isVisibleConfirmPassword.value;
   }
 }

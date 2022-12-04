@@ -6,9 +6,7 @@ import '../widgets/text_field_password.dart';
 import '../widgets/text_field_signin.dart';
 
 class SigninPage extends StatefulWidget {
-  const SigninPage({super.key, required this.title});
-
-  final String title;
+  const SigninPage({super.key});
 
   @override
   State<SigninPage> createState() => _SigninPageState();
@@ -36,9 +34,9 @@ class _SigninPageState extends State<SigninPage> {
       body: Container(
         decoration: const BoxDecoration(
             image: DecorationImage(
-          image: AssetImage("images/backgroundSignin.png"),
-          fit: BoxFit.cover,
-        )),
+              image: AssetImage("images/backgroundSignin.png"),
+              fit: BoxFit.cover,
+            )),
         child: Container(
           padding: const EdgeInsets.only(left: 25, right: 25),
           child: SingleChildScrollView(
@@ -61,8 +59,7 @@ class _SigninPageState extends State<SigninPage> {
                 TextFieldSignin(
                   hintText: "Digite o seu nome: ",
                   labelText: "Nome",
-                  isDdd: false,
-                  isPhone: false,
+                  typeInput: TextInputType.text,
                   controller: signinController.nomeController,
                   sufixIcon: Icon(
                     Icons.keyboard,
@@ -78,8 +75,8 @@ class _SigninPageState extends State<SigninPage> {
                       child: TextFieldSignin(
                         hintText: "Digite o seu ddd",
                         labelText: "DDD",
-                        isDdd: true,
-                        isPhone: false,
+                        formatter: "##",
+                        typeInput: TextInputType.number,
                         controller: signinController.dddController,
                         sufixIcon: Icon(
                           Icons.call,
@@ -93,8 +90,8 @@ class _SigninPageState extends State<SigninPage> {
                       child: TextFieldSignin(
                         hintText: "Digite o seu número de telefone: ",
                         labelText: "Telefone",
-                        isDdd: false,
-                        isPhone: true,
+                        formatter: "#####-####",
+                        typeInput: const TextInputType.numberWithOptions(),
                         controller: signinController.telefoneController,
                         sufixIcon: Icon(
                           Icons.phone_android,
@@ -109,8 +106,7 @@ class _SigninPageState extends State<SigninPage> {
                 TextFieldSignin(
                   hintText: "Digite o seu e-mail",
                   labelText: "E-mail",
-                  isDdd: false,
-                  isPhone: false,
+                  typeInput: TextInputType.emailAddress,
                   controller: signinController.emailController,
                   sufixIcon: Icon(
                     Icons.mail,
@@ -122,7 +118,7 @@ class _SigninPageState extends State<SigninPage> {
                 TextFieldPassword(
                   hintText: "Digite uma senha",
                   labelText: "Senha",
-                  isPasswordOrConfirm: true,
+                  isPasswordOrConfirmPassword: true,
                   controller: signinController.senhaController,
                   signinController: signinController,
                 ),
@@ -130,7 +126,7 @@ class _SigninPageState extends State<SigninPage> {
                 TextFieldPassword(
                   hintText: "Confirme a sua senha",
                   labelText: "Confirmação de senha",
-                  isPasswordOrConfirm: false,
+                  isPasswordOrConfirmPassword: false,
                   controller: signinController.confirmacaoController,
                   signinController: signinController,
                 ),
@@ -145,8 +141,8 @@ class _SigninPageState extends State<SigninPage> {
                         style: ButtonStyle(
                             shape: MaterialStateProperty.all(
                                 RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15.0),
-                            )),
+                                  borderRadius: BorderRadius.circular(15.0),
+                                )),
                             backgroundColor: MaterialStateProperty.all(
                                 Palette.materialPurple.shade700)),
                         child: const Text("Salvar",

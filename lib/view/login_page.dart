@@ -38,21 +38,25 @@ class _LoginPageState extends State<LoginPage> {
         child: Container(
           padding: const EdgeInsets.only(left: 25, right: 25),
           child: SingleChildScrollView(
-            padding: EdgeInsets.fromLTRB(0, 0, 0, 90),
+            padding: const EdgeInsets.fromLTRB(0, 0, 0, 90),
             reverse: false,
             child: Column(
               children: [
-                const SizedBox(height: 50),
-                const LogoSizedBox(),
-                const Padding(
-                  padding: EdgeInsets.only(top: 20),
-                  child: Text(
-                    "Login",
-                    style: TextStyle(
-                        fontSize: 25,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w900,
-                        fontFamily: "Schyler"),
+                const SizedBox(height: 130),
+                const Hero(tag: 'logoHero', child: LogoSizedBox()),
+                Padding(
+                  padding: const EdgeInsets.only(top: 30),
+                  child: Hero(
+                    tag: "txtLoginToSigin",
+                    flightShuttleBuilder: flighShuttleBuilder,
+                    child: const Text(
+                      "Login",
+                      style: TextStyle(
+                          fontSize: 25,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w500,
+                          fontFamily: "Schyler"),
+                    ),
                   ),
                 ),
                 const SizedBox(height: 30),
@@ -81,7 +85,7 @@ class _LoginPageState extends State<LoginPage> {
                     height: 40,
                     child: ElevatedButton(
                         onPressed: () {
-                          print("Logar");
+                          debugPrint("Logar");
                         },
                         style: ButtonStyle(
                             shape: MaterialStateProperty.all(
@@ -100,31 +104,30 @@ class _LoginPageState extends State<LoginPage> {
                     width: 150,
                     height: 40,
                     child: ElevatedButton(
-                        onPressed: () {
-                          print("Cadastrar");
-                        },
+                        onPressed: () =>
+                            Navigator.pushNamed(context, '/signin'),
                         style: ButtonStyle(
                             shape: MaterialStateProperty.all(
                                 RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(15.0),
-                                )),
+                              borderRadius: BorderRadius.circular(15.0),
+                            )),
                             backgroundColor: MaterialStateProperty.all(
                                 Palette.materialGreen.shade700)),
                         child: const Text("Cadastrar",
                             style: TextStyle(
                               fontSize: 17,
-                              fontWeight: FontWeight.w600,
+                              fontWeight: FontWeight.w400,
                             )))),
                 const SizedBox(height: 15),
                 TextButton(
                   onPressed: () {
-                    print("Esqueceu a senha");
+                    debugPrint("Esqueceu a senha");
                   },
-                  child: Text("Esqueceu a senha ?",
+                  child: const Text("Esqueceu a senha ?",
                       style: TextStyle(
-                          fontSize: 20,
+                          fontSize: 18,
                           fontFamily: "Schyler",
-                          fontWeight: FontWeight.w900,
+                          fontWeight: FontWeight.w500,
                           color: Color.fromARGB(255, 98, 81, 248))),
                 ),
               ],
@@ -132,6 +135,14 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ),
       ),
+    );
+  }
+
+  Widget flighShuttleBuilder(flightContext, animation, flightDirection,
+      fromHeroContext, toHeroContext) {
+    return DefaultTextStyle(
+      style: DefaultTextStyle.of(toHeroContext).style,
+      child: toHeroContext.widget,
     );
   }
 }

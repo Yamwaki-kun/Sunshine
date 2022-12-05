@@ -34,9 +34,9 @@ class _SigninPageState extends State<SigninPage> {
       body: Container(
         decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("images/backgroundSignin.png"),
-              fit: BoxFit.cover,
-            )),
+          image: AssetImage("images/backgroundSignin.png"),
+          fit: BoxFit.cover,
+        )),
         child: Container(
           padding: const EdgeInsets.only(left: 25, right: 25),
           child: SingleChildScrollView(
@@ -44,15 +44,19 @@ class _SigninPageState extends State<SigninPage> {
             child: Column(
               children: [
                 const SizedBox(height: 50),
-                const LogoSizedBox(),
+                const Hero(tag: 'logoHero', child: LogoSizedBox()),
                 const Padding(
                   padding: EdgeInsets.only(top: 20),
-                  child: Text(
-                    "Cadastro",
-                    style: TextStyle(
-                        fontSize: 25,
-                        color: Colors.white,
-                        fontFamily: "Schyler"),
+                  child: Hero(
+                    tag: "txtLoginToSigin",
+                    child: Text(
+                      "Cadastro",
+                      style: TextStyle(
+                          fontSize: 25,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w500,
+                          fontFamily: "Schyler"),
+                    ),
                   ),
                 ),
                 const SizedBox(height: 30),
@@ -141,8 +145,8 @@ class _SigninPageState extends State<SigninPage> {
                         style: ButtonStyle(
                             shape: MaterialStateProperty.all(
                                 RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(15.0),
-                                )),
+                              borderRadius: BorderRadius.circular(15.0),
+                            )),
                             backgroundColor: MaterialStateProperty.all(
                                 Palette.materialPurple.shade700)),
                         child: const Text("Salvar",

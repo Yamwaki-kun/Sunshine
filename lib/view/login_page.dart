@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../colors/palette.dart';
@@ -6,6 +5,7 @@ import '../controller/signin_controller.dart';
 import '../widgets/logo_sized_box.dart';
 import '../widgets/text_field_password.dart';
 import '../widgets/text_field_signin.dart';
+import 'package:sign_button/sign_button.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -42,7 +42,7 @@ class _LoginPageState extends State<LoginPage> {
             reverse: false,
             child: Column(
               children: [
-                const SizedBox(height: 130),
+                const SizedBox(height: 100),
                 const Hero(tag: 'logoHero', child: LogoSizedBox()),
                 Padding(
                   padding: const EdgeInsets.only(top: 30),
@@ -84,9 +84,8 @@ class _LoginPageState extends State<LoginPage> {
                     width: 250,
                     height: 40,
                     child: ElevatedButton(
-                        onPressed: () {
-                          debugPrint("Logar");
-                        },
+                        onPressed: () =>
+                            Navigator.pushNamed(context, '/principal'),
                         style: ButtonStyle(
                             shape: MaterialStateProperty.all(
                                 RoundedRectangleBorder(
@@ -97,6 +96,7 @@ class _LoginPageState extends State<LoginPage> {
                         child: const Text("Logar",
                             style: TextStyle(
                               fontSize: 17,
+                              color: Colors.white,
                               fontWeight: FontWeight.w400,
                             )))),
                 const SizedBox(height: 20),
@@ -116,12 +116,33 @@ class _LoginPageState extends State<LoginPage> {
                         child: const Text("Cadastrar",
                             style: TextStyle(
                               fontSize: 17,
+                              color: Colors.white,
                               fontWeight: FontWeight.w400,
                             )))),
                 const SizedBox(height: 15),
+                const Text("Ou"),
+                const SizedBox(height: 15),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SignInButton.mini(
+                      buttonType: ButtonType.instagram,
+                      onPressed: () {},
+                    ),
+                    SignInButton.mini(
+                      buttonType: ButtonType.google,
+                      onPressed: () {},
+                    ),
+                    SignInButton.mini(
+                      buttonType: ButtonType.facebook,
+                      onPressed: () {},
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 25),
                 TextButton(
                   onPressed: () {
-                    debugPrint("Esqueceu a senha");
+                    Navigator.pushNamed(context, '/esqueceuASenha');
                   },
                   child: const Text("Esqueceu a senha ?",
                       style: TextStyle(

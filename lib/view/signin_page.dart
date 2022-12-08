@@ -32,6 +32,8 @@ class _SigninPageState extends State<SigninPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Container(
+        width: double.infinity,
+        height: double.infinity,
         decoration: const BoxDecoration(
             image: DecorationImage(
           image: AssetImage("images/backgroundSignin.png"),
@@ -40,7 +42,7 @@ class _SigninPageState extends State<SigninPage> {
         child: Container(
           padding: const EdgeInsets.only(left: 25, right: 25),
           child: SingleChildScrollView(
-            reverse: true,
+            reverse: false,
             child: Column(
               children: [
                 const SizedBox(height: 50),

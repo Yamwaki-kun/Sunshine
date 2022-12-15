@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:sunshine_app/controller/signin_controller.dart';
 import '../colors/palette.dart';
 import '../widgets/logo_sized_box.dart';
-import '../widgets/text_field_password.dart';
-import '../widgets/text_field_signin.dart';
+import '../widgets/textfields/text_field_password.dart';
+import '../widgets/textfields/text_field_signin.dart';
 
 class SigninPage extends StatefulWidget {
   const SigninPage({super.key});

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../colors/palette.dart';
 import '../controller/signin_controller.dart';
 import '../widgets/logo_sized_box.dart';
-import '../widgets/text_field_password.dart';
-import '../widgets/text_field_signin.dart';
+import '../widgets/textfields/text_field_password.dart';
+import '../widgets/textfields/text_field_signin.dart';
 import 'package:sign_button/sign_button.dart';
 
 class LoginPage extends StatefulWidget {

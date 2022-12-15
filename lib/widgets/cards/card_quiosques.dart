@@ -1,21 +1,25 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-
-import '../colors/palette.dart';
+import '../../colors/palette.dart';
 
 class CardQuiosques extends StatelessWidget {
-  const CardQuiosques({
+  bool shadow;
+  CardQuiosques({
     Key? key,
+    required this.shadow,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Card(
-        child: Container(
-            height: 81,
+        shadowColor: !shadow ? Colors.transparent : null,
+        child: SizedBox(
+            height: 80,
             width: double.infinity,
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
+                const SizedBox(width: 20),
                 Row(
                   children: [
                     Container(
@@ -35,9 +39,9 @@ class CardQuiosques extends StatelessWidget {
                             Row(
                               children: [
                                 SizedBox(
-                                  width: 150,
+                                  width: 100,
                                   child: Text(
-                                    "Quiosque vistamar",
+                                    "Vitor Amaral",
                                     style: TextStyle(
                                         fontFamily: "Schyler",
                                         fontWeight: FontWeight.w600,
@@ -46,7 +50,7 @@ class CardQuiosques extends StatelessWidget {
                                         fontSize: 16),
                                   ),
                                 ),
-                                const SizedBox(width: 5),
+                                const SizedBox(width: 3),
                                 Icon(
                                   Icons.verified,
                                   size: 17,
@@ -76,8 +80,6 @@ class CardQuiosques extends StatelessWidget {
                         )),
                   ],
                 ),
-                const Align(
-                    child: Icon(Icons.favorite, size: 22, color: Colors.red)),
               ],
             )));
   }

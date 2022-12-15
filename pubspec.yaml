@@ -70,6 +70,7 @@ flutter:
      - images/backgroundSignin.png 
      - images/backgroundMenu.png
      - images/quiosqueImage.png
+     - images/quiosque_foto.jpg
      - images/logo.png 
   
   fonts:

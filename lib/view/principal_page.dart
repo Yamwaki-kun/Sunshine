@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:sunshine_app/colors/palette.dart';
-import 'package:sunshine_app/widgets/search_text_field.dart';
-import '../widgets/card_quiosques.dart';
+import 'package:sunshine_app/view/rentals_principal_page.dart';
 import '../widgets/custom_animated_bottom_bar.dart';
+import 'compras_page.dart';
+import 'geo_localization_page.dart';
+import 'mensagens_page.dart';
+import 'meu_usuario_page.dart';
 
 class PrincipalPage extends StatefulWidget {
   const PrincipalPage({super.key});
@@ -13,56 +16,20 @@ class PrincipalPage extends StatefulWidget {
 
 int _currentIndex = 0;
 var _inactiveColor = Colors.grey;
+var caminhos = [
+  const RentalPrincipalPage(),
+  const GeoLocalizationPage(),
+  const ComprasPage(),
+  const MensagensPage(),
+  const MeuUsuarioPage()
+];
 
 class _PrincipalPageState extends State<PrincipalPage> {
   TextEditingController controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
-        body: Container(
-          decoration: const BoxDecoration(
-              image: DecorationImage(
-            image: AssetImage("images/backgroundMenu.png"),
-            fit: BoxFit.cover,
-          )),
-          child: Container(
-            padding: const EdgeInsets.only(left: 10, right: 10),
-            width: double.infinity,
-            height: double.infinity,
-            child: SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.only(left: 10, right: 10),
-                child: Column(
-                  children: [
-                    const SizedBox(height: 70),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 13, right: 13),
-                      child: SearchTextField(controller: controller),
-                    ),
-                    const SizedBox(height: 20),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height,
-                      width: MediaQuery.of(context).size.width,
-                      child: ScrollConfiguration(
-                        behavior: MyBehavior(),
-                        child: ListView.builder(
-                          reverse: true,
-                          itemCount: 10,
-                          physics: const ScrollPhysics(),
-                          scrollDirection: Axis.vertical,
-                          itemBuilder: (context, index) {
-                            return const CardQuiosques();
-                          },
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ),
+        body: caminhos[_currentIndex],
         bottomNavigationBar: CustomAnimatedBottomBar(
           containerHeight: 70,
           backgroundColor: Colors.white,
@@ -70,20 +37,20 @@ class _PrincipalPageState extends State<PrincipalPage> {
           showElevation: true,
           itemCornerRadius: 24,
           curve: Curves.easeIn,
-          onItemSelected: (index) => setState(() => _currentIndex = index),
+          onItemSelected: (value) {
+            setState(() => _currentIndex = value);
+          },
           items: <BottomNavyBarItem>[
             BottomNavyBarItem(
               icon: const Icon(Icons.beach_access),
-              title: const Text('Quiosques'),
+              title: const Text('Locadores'),
               activeColor: Palette.materialBronze,
               inactiveColor: _inactiveColor,
               textAlign: TextAlign.center,
             ),
             BottomNavyBarItem(
               icon: const Icon(Icons.location_on_sharp),
-              title: const Text(
-                'Localização',
-              ),
+              title: const Text('Localização'),
               activeColor: Palette.materialBlueApp,
               inactiveColor: _inactiveColor,
               textAlign: TextAlign.center,
@@ -96,6 +63,13 @@ class _PrincipalPageState extends State<PrincipalPage> {
               textAlign: TextAlign.center,
             ),
             BottomNavyBarItem(
+              icon: const Icon(Icons.chat_rounded),
+              title: const Text('Mensagens'),
+              activeColor: Colors.deepPurple,
+              inactiveColor: _inactiveColor,
+              textAlign: TextAlign.center,
+            ),
+            BottomNavyBarItem(
               icon: const Icon(Icons.person),
               title: const Text('Meu usuário'),
               activeColor: Colors.blue,
@@ -104,13 +78,5 @@ class _PrincipalPageState extends State<PrincipalPage> {
             ),
           ],
         ));
-  }
-}
-
-class MyBehavior extends ScrollBehavior {
-  @override
-  Widget buildOverscrollIndicator(
-      BuildContext context, Widget child, ScrollableDetails details) {
-    return child;
   }
 }

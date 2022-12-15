@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sunshine_app/colors/palette.dart';
-import 'package:sunshine_app/controller/signin_controller.dart';
-import 'package:sunshine_app/widgets/text_field_signin.dart';
+import 'package:sunshine_app/widgets/textfields/text_field_signin.dart';
 
 class EsqueceuASenha extends StatefulWidget {
   const EsqueceuASenha({super.key});
@@ -11,6 +10,7 @@ class EsqueceuASenha extends StatefulWidget {
 }
 
 class _EsqueceuASenhaState extends State<EsqueceuASenha> {
+  TextEditingController controlador = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,8 +21,21 @@ class _EsqueceuASenhaState extends State<EsqueceuASenha> {
         surfaceTintColor: Colors.white,
       ),
       body: Container(
+        padding: const EdgeInsets.only(left: 30, right: 30),
         color: Colors.white,
-        //child: TextFieldSignin(labelText: "labelText", hintText: "hintText", sufixIcon: , controller: controller., typeInput: typeInput),
+        child: Column(
+          children: [
+            SizedBox(
+              height: MediaQuery.of(context).size.height / 5,
+            ),
+            TextFieldSignin(
+                labelText: "E-mail",
+                hintText: "Digite o seu E-mail",
+                sufixIcon: const Icon(Icons.mail),
+                controller: controlador,
+                typeInput: TextInputType.emailAddress)
+          ],
+        ),
       ),
     );
   }

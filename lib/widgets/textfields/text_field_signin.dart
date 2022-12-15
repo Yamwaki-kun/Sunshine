@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../colors/palette.dart';
+import '../../colors/palette.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class TextFieldSignin extends StatelessWidget {
@@ -32,11 +32,11 @@ class TextFieldSignin extends StatelessWidget {
             borderRadius: BorderRadius.all(Radius.circular(15))),
         hintText: hintText,
         hintStyle:
-        TextStyle(color: Palette.materialPurple.shade900, fontSize: 15),
+            TextStyle(color: Palette.materialPurple.shade900, fontSize: 15),
         isDense: true,
         suffixIcon: sufixIcon,
         contentPadding:
-        const EdgeInsets.symmetric(vertical: 12, horizontal: 15),
+            const EdgeInsets.symmetric(vertical: 12, horizontal: 15),
       ),
     );
   }

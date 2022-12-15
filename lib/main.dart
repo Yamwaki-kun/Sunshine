@@ -3,6 +3,7 @@ import 'package:sunshine_app/colors/palette.dart';
 import 'package:sunshine_app/view/esqueceu_a_senha.dart';
 import 'package:sunshine_app/view/login_page.dart';
 import 'package:sunshine_app/view/principal_page.dart';
+import 'package:sunshine_app/view/rentals_detail_page.dart';
 import 'view/signin_page.dart';
 
 void main() {
@@ -24,7 +25,8 @@ class MyApp extends StatelessWidget {
         '/login': (context) => const LoginPage(),
         '/signin': (context) => const SigninPage(),
         '/principal': (context) => const PrincipalPage(),
-        '/esqueceuASenha': (context) => const EsqueceuASenha()
+        '/esqueceuASenha': (context) => const EsqueceuASenha(),
+        '/detailQuiosque': (context) => const QuiosqueDetail()
       },
     );
   }

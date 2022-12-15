@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import '../colors/palette.dart';
-import '../controller/signin_controller.dart';
+import '../../colors/palette.dart';
+import '../../controller/signin_controller.dart';
 
 class TextFieldPassword extends StatelessWidget {
   const TextFieldPassword({

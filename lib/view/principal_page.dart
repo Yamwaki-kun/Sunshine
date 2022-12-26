@@ -4,7 +4,6 @@ import 'package:sunshine_app/view/rentals_principal_page.dart';
 import '../widgets/custom_animated_bottom_bar.dart';
 import 'compras_page.dart';
 import 'geo_localization_page.dart';
-import 'mensagens_page.dart';
 import 'meu_usuario_page.dart';
 
 class PrincipalPage extends StatefulWidget {
@@ -20,7 +19,6 @@ var caminhos = [
   const RentalPrincipalPage(),
   const GeoLocalizationPage(),
   const ComprasPage(),
-  const MensagensPage(),
   const MeuUsuarioPage()
 ];
 
@@ -62,13 +60,14 @@ class _PrincipalPageState extends State<PrincipalPage> {
               inactiveColor: _inactiveColor,
               textAlign: TextAlign.center,
             ),
+            /*
             BottomNavyBarItem(
               icon: const Icon(Icons.chat_rounded),
               title: const Text('Mensagens'),
               activeColor: Colors.deepPurple,
               inactiveColor: _inactiveColor,
               textAlign: TextAlign.center,
-            ),
+            ),*/
             BottomNavyBarItem(
               icon: const Icon(Icons.person),
               title: const Text('Meu usuário'),

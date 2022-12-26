@@ -12,8 +12,11 @@ class _SacolaPageState extends State<SacolaPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
-      child: CardSacola(shadow: true),
-    );
+        decoration: const BoxDecoration(
+            image: DecorationImage(
+          image: AssetImage("images/backgroundSignin.png"),
+          fit: BoxFit.cover,
+        )),
+        child: CardSacola(shadow: true));
   }
 }

@@ -138,6 +138,19 @@ class CardHistoricoCompras extends StatelessWidget {
                       child: const Text("Locador"),
                     ),
                   ),
+                  const SizedBox(width: 20),
+                  SizedBox(
+                    width: 90,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.of(context).pushNamed("/mensagensPage");
+                      },
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor:
+                              const Color.fromARGB(255, 134, 134, 134)),
+                      child: const Text("Chat"),
+                    ),
+                  ),
                 ],
               ),
             )

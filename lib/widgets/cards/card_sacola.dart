@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sunshine_app/widgets/cards/card_item.dart';
-import 'package:sunshine_app/widgets/listviews/listview_cards.dart';
+import 'package:sunshine_app/widgets/listviews/listview_card_sacola.dart';
+
+import 'card_item_sacola.dart';
 
 class CardSacola extends StatelessWidget {
   bool shadow;
@@ -13,7 +14,7 @@ class CardSacola extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
         shadowColor: !shadow ? Colors.transparent : null,
-        color: const Color.fromARGB(255, 243, 243, 243),
+        color: const Color.fromARGB(90, 255, 255, 255),
         margin: EdgeInsets.only(
           left: MediaQuery.of(context).size.width / 40,
           right: MediaQuery.of(context).size.width / 40,
@@ -28,8 +29,8 @@ class CardSacola extends StatelessWidget {
               child: MediaQuery.removePadding(
                 context: context,
                 removeTop: true,
-                child: ListViewCard(
-                  card: CardItem(shadow: true),
+                child: ListViewCardSacola(
+                  card: CardItemSacola(shadow: false),
                 ),
               ),
             ),
@@ -58,25 +59,6 @@ class CardSacola extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             Row(
-              children: [
-                const SizedBox(width: 10),
-                ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color.fromARGB(206, 244, 67, 54)),
-                  child: const Text("Cancelar"),
-                ),
-                const SizedBox(width: 10),
-                ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor:
-                            const Color.fromARGB(181, 0, 128, 233)),
-                    onPressed: () {},
-                    child: const Text("Finalizar Pedido")),
-              ],
-            ),
-            const SizedBox(height: 10),
-            Row(
               children: const [
                 SizedBox(width: 10),
                 Icon(Icons.credit_card,
@@ -88,6 +70,28 @@ class CardSacola extends StatelessWidget {
                 )
               ],
             ),
+            const SizedBox(height: 10),
+            Row(
+              children: [
+                const SizedBox(width: 10),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color.fromARGB(255, 244, 67, 54)),
+                  child: const Text("Cancelar"),
+                ),
+                const SizedBox(width: 10),
+                ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor:
+                            const Color.fromARGB(255, 0, 128, 233)),
+                    onPressed: () {},
+                    child: const Text("Finalizar Pedido")),
+              ],
+            ),
+            const SizedBox(height: 10),
           ],
         ));
   }

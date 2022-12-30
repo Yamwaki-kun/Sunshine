@@ -64,7 +64,9 @@ class _QuiosqueDetailState extends State<QuiosqueDetail> {
                     Padding(
                       padding: const EdgeInsets.only(top: 15),
                       child: IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushNamed(context, "/mensagensPage");
+                          },
                           icon: const Icon(
                             Icons.message,
                             color: Color.fromARGB(255, 163, 163, 163),

@@ -2,9 +2,9 @@
 import 'package:flutter/material.dart';
 import '../../colors/palette.dart';
 
-class CardItem extends StatelessWidget {
+class CardItemSacola extends StatelessWidget {
   bool shadow;
-  CardItem({
+  CardItemSacola({
     Key? key,
     required this.shadow,
   }) : super(key: key);
@@ -12,9 +12,10 @@ class CardItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+        color: Colors.white,
         shadowColor: !shadow ? Colors.transparent : null,
         child: SizedBox(
-            height: MediaQuery.of(context).size.height / 10,
+            height: MediaQuery.of(context).size.height / 9,
             width: double.infinity,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -73,12 +74,26 @@ class CardItem extends StatelessWidget {
                         )),
                   ],
                 ),
-                Align(
-                    child: IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.add,
-                            size: 22,
-                            color: Color.fromARGB(255, 134, 134, 134)))),
+                Row(
+                  children: [
+                    Align(
+                        child: IconButton(
+                            onPressed: () {},
+                            icon: const Icon(Icons.add,
+                                size: 22,
+                                color: Color.fromARGB(255, 134, 134, 134)))),
+                    const Text(
+                      "1",
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 129, 129, 129),
+                          fontWeight: FontWeight.w900,
+                          fontSize: 18),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    )
+                  ],
+                ),
               ],
             )));
   }

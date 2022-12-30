@@ -5,10 +5,8 @@ import '../cards/card_quiosques.dart';
 
 class ListViewCard extends StatelessWidget {
   Widget card;
-  ListViewCard({
-    Key? key,
-    required this.card,
-  }) : super(key: key);
+
+  ListViewCard({Key? key, required this.card}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

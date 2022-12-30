@@ -17,6 +17,6 @@ class _SacolaPageState extends State<SacolaPage> {
           image: AssetImage("images/backgroundSignin.png"),
           fit: BoxFit.cover,
         )),
-        child: CardSacola(shadow: true));
+        child: CardSacola(shadow: false));
   }
 }

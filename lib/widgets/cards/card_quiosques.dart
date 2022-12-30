@@ -12,10 +12,10 @@ class CardQuiosques extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-        shadowColor: !shadow ? Colors.transparent : null,
+        margin: const EdgeInsets.only(left: 15, right: 15, top: 10, bottom: 10),
+        shadowColor: !shadow ? Colors.transparent : Colors.black,
         child: SizedBox(
             height: 80,
-            width: double.infinity,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
